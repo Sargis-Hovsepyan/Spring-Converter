@@ -3,17 +3,20 @@
 
 
 #include <vector>
+#include <cmath>
+
 using std::vector;
 
 class Spring
 {
     private:
-        double k = 1;
+        double _k;
     
     public:
         Spring();
         Spring(const double k);
         Spring(const Spring& other);
+        ~Spring();
 
         Spring&     operator=(const Spring& other);
 
@@ -37,7 +40,6 @@ class Spring
 
         vector<double>  get_all_coordinates(double t0, double t1, double dt, double x0, double v0,  double mass);
 
-        double*         list_to_array(vector<double> coordinates);
         double          harmonic_motion_coordinate(double t, double omega, double c1, double c2);
 };
 
