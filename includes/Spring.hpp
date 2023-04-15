@@ -21,6 +21,7 @@ class Spring
         Spring&     operator=(const Spring& other);
 
         void        setK(double k);
+        double      setK(double k) const;
 
         double*     move(double t, double dt, double x0, double v0);
         double*     move(double t, double dt, double x0);

@@ -10,17 +10,18 @@ Spring::Spring(const Spring& other) { *this = other; }
 
 Spring::~Spring() {}
 
-
-/* Public Interface Functions */
-
 Spring&     Spring::operator=(const Spring& other)
 {
     this->_k = other._k;
     return(*this);
 }
 
-void        Spring::setK(double k) { this->_k = k; }
 
+/* Public Interface Functions */
+
+void        Spring::set_k(double k) { this->_k = k; }
+
+void        Spring::get_k(double k) const { return (this->_k); }
 
 double*     Spring::move(double t, double dt, double x0, double v0)
 {
