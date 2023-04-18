@@ -39,9 +39,9 @@ class Spring
         Spring          in_series(const Spring& spring1, const Spring& spring2);
         Spring          in_parallel(const Spring& spring1, const Spring& spring2);
 
-        vector<double>  get_all_coordinates(double t0, double t1, double dt, double x0, double v0,  double mass);
+        vector<double>  get_coordinates(double t0, double t1, double dt, double x0, double v0,  double mass);
 
-        double          harmonic_motion_coordinate(double t, double omega, double c1, double c2);
+        double          simple_harmonic_motion(double t, double omega, double c1, double c2);
 };
 
 #endif
