@@ -1,4 +1,4 @@
-#include "spring.hpp"
+#include "Spring.hpp"
 
 int main()
 {
