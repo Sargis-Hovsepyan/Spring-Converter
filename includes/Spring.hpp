@@ -18,7 +18,7 @@ class Spring
         Spring(const Spring& other);
         ~Spring();
 
-        Spring&             operator=(const Spring& other);
+        Spring&             operator=(const Spring& src);
 
         void                setK(double k);
         double              setK(double k) const;
