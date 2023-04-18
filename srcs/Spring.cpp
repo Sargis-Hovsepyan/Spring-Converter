@@ -10,9 +10,9 @@ Spring::Spring(const Spring& other) { *this = other; }
 
 Spring::~Spring() {}
 
-Spring&     Spring::operator=(const Spring& other)
+Spring&     Spring::operator=(const Spring& src)
 {
-    this->_k = other._k;
+    this->_k = src._k;
     return(*this);
 }
 
