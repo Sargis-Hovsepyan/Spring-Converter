@@ -48,6 +48,21 @@ vector<double>      Spring::move(double t0, double t1, double dt, double x0, dou
 }
 
 
+/* Connect Functions */
+
+Spring&             Spring::operator+(const Spring& s)
+{
+    this->_k += s._k;
+    return (*this);
+}
+
+Spring&             Spring::operator*(const Spring& s)
+{
+    this->_k = (this->_k * s._k) / (this->_k + s._k);
+    return (*this);
+}
+
+
 /* UTILITY METHODS */
 
 vector<double>      Spring::get_coordinates(double t0, double t1, double dt, double x0, double v0,  double mass=1)
@@ -62,8 +77,8 @@ vector<double>      Spring::get_coordinates(double t0, double t1, double dt, dou
     
     while (curr_time < t1)
     {
-        double coordinate = simple_harmonic_motion(curr_time, omega, c1, c2);
-        coordinates.push_back(coordinate);
+        double p = simple_harmonic_motion(curr_time, omega, c1, c2);
+        coordinates.push_back(p);
         curr_time += dt;
     }
 
