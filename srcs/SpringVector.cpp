@@ -22,13 +22,21 @@ Spring&      SpringVector::equivalent_spring(string expr)
 
     for (unsigned long i = 1; i < expr.size(); i++)
     {
-        //char top = stack.top();
-        //char curr = expr[i];
+        char top = stack.top();
+        char curr = expr[i];
         
-        // if ()
-        start++;
+        if (is_open(curr))
+            stack.push(curr);
     }
 
     return *(new Spring);
 }
+
+
+/* UTIL FUNCTIONS */
+
+bool        SpringVector::is_open(char c) { return  (c == '}' || c == ']'); }
+bool        SpringVector::is_close(char c) { return  (c == '{' || c == '['); }
+bool        SpringVector::is_brace(char c) { return  (c == '{' || c == '}'); }
+bool        SpringVector::is_bracket(char c) { return  (c == '[' || c == ']'); }
 

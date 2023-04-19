@@ -23,6 +23,15 @@ class SpringVector
 
         static Spring&          equivalent_spring(string expr);
         static Spring&          equivalent_spring(string expr, vector<Spring>& springs);
+
+        /* Util Functions */
+
+    private:
+
+        static bool             is_open(char c);
+        static bool             is_close(char c);
+        static bool             is_brace(char c);
+        static bool             is_bracket(char c);
 };
 
 #endif
