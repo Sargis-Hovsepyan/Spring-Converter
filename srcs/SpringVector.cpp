@@ -25,7 +25,7 @@ Spring&      SpringVector::equivalent_spring(string expr)
         char top = stack.top();
         char curr = expr[i];
         
-        if (is_open(curr))
+        if (is_open(curr) && is_open(top))
             stack.push(curr);
     }
 
@@ -39,4 +39,12 @@ bool        SpringVector::is_open(char c) { return  (c == '}' || c == ']'); }
 bool        SpringVector::is_close(char c) { return  (c == '{' || c == '['); }
 bool        SpringVector::is_brace(char c) { return  (c == '{' || c == '}'); }
 bool        SpringVector::is_bracket(char c) { return  (c == '[' || c == ']'); }
+
+bool        SpringVector::matching(char a, char b)
+{ 
+    bool braces = (a == '{' && b == '}') || (a == '}' && b == '{') 
+    bool brackets = (a == '[' && b == ']') || (a == ']' && b == '[') 
+
+    return  (braces || brackets); 
+}
 
