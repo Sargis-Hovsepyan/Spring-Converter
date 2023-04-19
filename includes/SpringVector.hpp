@@ -1,9 +1,14 @@
 #ifndef SPRINGVECTOR_HPP
 #define SPRINGVECTOR_HPP
 
-#include "Spring.hpp"
+
 #include <string>
+#include <stack>
+
+#include "Spring.hpp"
+
 using std::string;
+using std::stack;
 
 class SpringVector
 {
@@ -16,8 +21,8 @@ class SpringVector
 
     public:
 
-        static Spring&  equivalent_spring(string expr);
-        static Spring&  equivalent_spring(string expr, vector<Spring>& springs);
+        static Spring&          equivalent_spring(string expr);
+        static Spring&          equivalent_spring(string expr, vector<Spring>& springs);
 };
 
 #endif
