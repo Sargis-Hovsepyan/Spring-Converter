@@ -1,5 +1,5 @@
 NAME = spring
-SRCS = $(wildcard *.cpp)
+SRCS = $(wildcard srcs/*.cpp *.cpp)
 OBJS = ${SRCS:.cpp=.o}
 
 CC = clang++

@@ -1,4 +1,4 @@
-#include "spring.hpp"
+#include "Spring.hpp"
 
 /* Constructors and Destructor */
 
@@ -19,9 +19,10 @@ Spring&     Spring::operator=(const Spring& src)
 
 /* Setters and Getters */
 
-void        Spring::set_k(double k) { this->_k = k; }
 
-void        Spring::get_k(double k) const { return (this->_k); }
+double      Spring::get_k() const { return (this->_k); }
+
+void        Spring::set_k(double k) { this->_k = k; }
 
 
 /* Move Functions */
@@ -29,22 +30,22 @@ void        Spring::get_k(double k) const { return (this->_k); }
 
 vector<double>      Spring::move(double t, double dt, double x0)
 { 
-    return get_coordinates(0, t, dt, x0, NULL, NULL).data();
+    return get_coordinates(0, t, dt, x0, 0, 0);
 }
 
 vector<double>      Spring::move(double t, double dt, double x0, double v0)
 {
-    return get_coordinates(0, t, dt, x0, v0, NULL).data();
+    return get_coordinates(0, t, dt, x0, v0, 0);
 }
 
 vector<double>      Spring::move(double t0, double t1, double dt, double x0, double v0)
 {
-    return get_coordinates(t0, t1, dt, x0, v0, NULL).data();
+    return get_coordinates(t0, t1, dt, x0, v0, 0);
 }
 
 vector<double>      Spring::move(double t0, double t1, double dt, double x0, double v0, double m)
 {
-    return get_coordinates(t0, t1, dt, x0, v0, m).data();
+    return get_coordinates(t0, t1, dt, x0, v0, m);
 }
 
 

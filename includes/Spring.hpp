@@ -20,8 +20,8 @@ class Spring
 
         Spring&             operator=(const Spring& src);
 
-        void                setK(double k);
-        double              setK(double k) const;
+        double              get_k() const;
+        void                set_k(double k);
 
         vector<double>      move(double t, double dt, double x0);
         vector<double>      move(double t, double dt, double x0, double v0);

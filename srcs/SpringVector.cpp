@@ -1,34 +1,34 @@
-#include "SpringVectorVector.hpp"
+#include "SpringVector.hpp"
 
 /* Constructors and Destructor */
 
 SpringVector::SpringVector() {}
 
-SpringVector::SpringVector() {}
-
-SpringVector::SpringVector(const SpringVector& other) {}
+SpringVector::SpringVector(const SpringVector& other) { (void) other; }
 
 SpringVector::~SpringVector() {}
 
-SpringVector&       SpringVector::operator=(const SpringVector& src) {}
 
 /* Static Functions */
 
-static Spring&      Spring::equivalent_string(string expr)
+Spring&      SpringVector::equivalent_spring(string expr)
 {
-    stack<string>   stack;
+    stack<char>     stack;
     long            start;
     long            end;
 
     start = end = 0;
     stack.push(expr[0]);
 
-    for (int i = 1; i < expr.size(); i++)
+    for (unsigned long i = 1; i < expr.size(); i++)
     {
-        string top = stack.top();
-        string curr = expr[i];
+        //char top = stack.top();
+        //char curr = expr[i];
         
-        if ()
+        // if ()
+        start++;
     }
+
+    return *(new Spring);
 }
 
