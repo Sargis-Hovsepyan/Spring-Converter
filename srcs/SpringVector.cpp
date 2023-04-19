@@ -42,8 +42,8 @@ bool        SpringVector::is_bracket(char c) { return  (c == '[' || c == ']'); }
 
 bool        SpringVector::matching(char a, char b)
 { 
-    bool braces = (a == '{' && b == '}') || (a == '}' && b == '{') 
-    bool brackets = (a == '[' && b == ']') || (a == ']' && b == '[') 
+    bool braces = (a == '{' && b == '}') || (a == '}' && b == '{') ;
+    bool brackets = (a == '[' && b == ']') || (a == ']' && b == '['); 
 
     return  (braces || brackets); 
 }

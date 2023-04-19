@@ -32,6 +32,8 @@ class SpringVector
         static bool             is_close(char c);
         static bool             is_brace(char c);
         static bool             is_bracket(char c);
+
+        static bool             matching(char a, char b);
 };
 
 #endif
