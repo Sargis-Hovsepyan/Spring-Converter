@@ -1,4 +1,5 @@
 #include "Spring.hpp"
+#include "SpringVector.hpp"
 
 int main()
 {

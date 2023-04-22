@@ -14,10 +14,8 @@ SpringVector::~SpringVector() {}
 Spring&      SpringVector::equivalent_spring(string expr)
 {
     stack<char>     stack;
-    long            start;
-    long            end;
 
-    start = end = 0;
+
     stack.push(expr[0]);
 
     for (unsigned long i = 1; i < expr.size(); i++)
@@ -42,9 +40,30 @@ bool        SpringVector::is_bracket(char c) { return  (c == '[' || c == ']'); }
 
 bool        SpringVector::matching(char a, char b)
 { 
-    bool braces = (a == '{' && b == '}') || (a == '}' && b == '{') ;
-    bool brackets = (a == '[' && b == ']') || (a == ']' && b == '['); 
+    bool braces = (a == '{' && b == '}');
+    bool brackets = (a == '[' && b == ']'); 
 
     return  (braces || brackets); 
 }
 
+string      SpringVector::process(const string& expr, bool unit)
+{   
+    stringstream    ss;
+    unsigned long   i = 0;
+    unsigned long   j = 0;
+
+    while (i < expr.length() - 1)
+    {
+        if (matching(expr[i], expr[i+1]))
+        {
+            ss << ((unit) ? 1 : j++);
+            i++;
+        }
+        else
+            ss << expr[i];
+        i++;
+    }
+
+    ss << expr[i];
+    return ss.str();
+}
