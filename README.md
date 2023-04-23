@@ -18,5 +18,5 @@ Videos
 - [Fourier Transform: A Visual Introduction](https://youtu.be/spUNpyF58BY)
 
 Links
-- <a href= "https://www.math.purdue.edu/files/academic/courses/2014fall/MA16021/FourierSeries(nopauses).pdf"> Fourier Series<\a>
+- <a href= "https://www.math.purdue.edu/files/academic/courses/2014fall/MA16021/FourierSeries(nopauses).pdf"> Fourier Series</a>
 - [Fourier Transforms](https://scholar.harvard.edu/files/schwartz/files/lecture8-fouriertransforms.pdf)
