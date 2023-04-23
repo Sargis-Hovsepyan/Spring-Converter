@@ -36,12 +36,41 @@ Spring&      SpringVector::equivalent_spring(string expr)
         else if (curr == '1')
             storage.push_back(std::make_pair(1, top.second));
         else
-            throw std::invalid_argument("Invalid argument");
+            throw std::invalid_argument("Invalid argument format!");
     }
 
     return *(new Spring(storage[0].first));
 }
 
+Spring&      SpringVector::equivalent_spring(string expr, vector<Spring>& springs)
+{
+    stack<pair<char, int>>      stack;
+    vector<pair<float, int>>    storage;
+    unsigned long               j = 0;
+
+    expr = process(expr, false);
+    stack.push(std::make_pair(expr[0], 0));
+
+    for (unsigned long i = 1; i < expr.size(); i++)
+    {
+        pair<char, int> top = stack.top();
+        char curr = expr[i];
+
+        if (matching(top.first, curr))
+        {
+            add_springs(storage, top);
+            stack.pop();
+        }
+        else if (is_open(curr))
+            stack.push(std::make_pair(curr, i));
+        else if (isdigit(curr))
+            storage.push_back(std::make_pair(springs[j++].get_k(), top.second));
+        else
+            throw std::invalid_argument("Invalid argument format!");
+    }
+
+    return *(new Spring(storage[0].first));
+}
 
 /* UTIL FUNCTIONS */
 
