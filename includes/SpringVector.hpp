@@ -1,9 +1,8 @@
 #ifndef SPRINGVECTOR_HPP
 #define SPRINGVECTOR_HPP
 
-
-#include <string>
 #include <sstream>
+#include <string>
 #include <stack>
 
 #include "Spring.hpp"
@@ -11,6 +10,7 @@
 using std::stringstream;
 using std::string;
 using std::stack;
+using std::pair;
 
 class SpringVector
 {
@@ -35,6 +35,7 @@ class SpringVector
 
         static bool             matching(char a, char b);
         static string           process(const string& expr, bool unit=true);
+        static void             add_springs(vector<pair<float, int>>& storage, pair<char, int> top);
 };
 
 #endif
