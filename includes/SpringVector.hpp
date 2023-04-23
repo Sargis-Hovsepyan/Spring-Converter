@@ -1,7 +1,7 @@
 #ifndef SPRINGVECTOR_HPP
 #define SPRINGVECTOR_HPP
 
-#include <sstream>
+#include <stdexcept>
 #include <string>
 #include <stack>
 
@@ -16,16 +16,14 @@ class SpringVector
 {
     private:
         SpringVector();
-        SpringVector(const SpringVector& src);
-        
-        SpringVector&   operator=(const SpringVector& src);
+        SpringVector(const SpringVector& src); 
         ~SpringVector();
 
     public:
         static Spring&          equivalent_spring(string expr);
         static Spring&          equivalent_spring(string expr, vector<Spring>& springs);
 
-        /* Util Functions */
+        /* UTIL FUNCTIONS */
 
     private:
         static bool             is_open(char c);
@@ -34,7 +32,6 @@ class SpringVector
         static bool             is_bracket(char c);
 
         static bool             matching(char a, char b);
-        static string           process(const string& expr, bool unit=true);
         static void             add_springs(vector<pair<float, int>>& storage, pair<char, int> top);
 };
 
