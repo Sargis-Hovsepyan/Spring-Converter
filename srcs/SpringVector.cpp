@@ -1,6 +1,4 @@
 #include "SpringVector.hpp"
-#include <stdexcept>
-#include <iostream>
 
 /* Constructors and Destructor */
 
@@ -18,23 +16,23 @@ Spring&      SpringVector::equivalent_spring(string expr)
     stack<pair<char, int>>      stack;
     vector<pair<float, int>>    storage;
 
-    expr = process(expr);
     stack.push(std::make_pair(expr[0], 0));
 
     for (unsigned long i = 1; i < expr.size(); i++)
     {
         pair<char, int> top = stack.top();
-        char curr = expr[i];
+        pair<char, int> curr = std::make_pair(expr[i], i);
 
-        if (matching(top.first, curr))
+        if (matching(top.first, curr.first))
         {
-            add_springs(storage, top);
             stack.pop();
+            if (curr.second - top.second == 1)
+                storage.push_back(std::make_pair(1, stack.top().second));
+            else
+                add_springs(storage, top);
         }
-        else if (is_open(curr))
-            stack.push(std::make_pair(curr, i));
-        else if (curr == '1')
-            storage.push_back(std::make_pair(1, top.second));
+        else if (is_open(curr.first))
+            stack.push(curr);
         else
             throw std::invalid_argument("Invalid argument format!");
     }
@@ -48,23 +46,28 @@ Spring&      SpringVector::equivalent_spring(string expr, vector<Spring>& spring
     vector<pair<float, int>>    storage;
     unsigned long               j = 0;
 
-    expr = process(expr, false);
     stack.push(std::make_pair(expr[0], 0));
 
     for (unsigned long i = 1; i < expr.size(); i++)
     {
         pair<char, int> top = stack.top();
-        char curr = expr[i];
+        pair<char, int> curr = std::make_pair(expr[i], i);
 
-        if (matching(top.first, curr))
+        if (matching(top.first, curr.first))
         {
-            add_springs(storage, top);
             stack.pop();
+            if (curr.second - top.second == 1)
+            {
+                if (j >= springs.size())
+                    throw std::invalid_argument("Invalid number of springs!");
+
+                storage.push_back(std::make_pair(springs[j++].get_k(), stack.top().second));
+            }
+            else
+                add_springs(storage, top);
         }
-        else if (is_open(curr))
-            stack.push(std::make_pair(curr, i));
-        else if (isdigit(curr))
-            storage.push_back(std::make_pair(springs[j++].get_k(), top.second));
+        else if (is_open(curr.first))
+            stack.push(curr);
         else
             throw std::invalid_argument("Invalid argument format!");
     }
@@ -85,27 +88,6 @@ bool        SpringVector::matching(char a, char b)
     bool brackets = (a == '[' && b == ']'); 
 
     return  (braces || brackets); 
-}
-
-string      SpringVector::process(const string& expr, bool unit)
-{   
-    stringstream    ss;
-    unsigned long   i = 0;
-    unsigned long   j = 0;
-
-    while (i < expr.length() - 1)
-    {
-        if (matching(expr[i], expr[i+1]))
-        {
-            ss << ((unit) ? 1 : j++);
-            i += 2;
-        }
-        else
-            ss << expr[i++];
-    }
-
-    ss << expr[i];
-    return ss.str();
 }
 
 void        SpringVector::add_springs(vector<pair<float, int>>& storage, pair<char, int> top)
