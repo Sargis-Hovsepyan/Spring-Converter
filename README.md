@@ -16,6 +16,7 @@ Books
 
 Videos
 - [Fourier Transform: A Visual Introduction](https://youtu.be/spUNpyF58BY)
+- [Fats Fourier Transform (FFT)](https://youtu.be/h7apO7q16V0)
 
 Links
 - <a href= "https://www.math.purdue.edu/files/academic/courses/2014fall/MA16021/FourierSeries(nopauses).pdf"> Fourier Series</a>
