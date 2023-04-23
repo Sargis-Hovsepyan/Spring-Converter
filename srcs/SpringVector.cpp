@@ -1,4 +1,6 @@
 #include "SpringVector.hpp"
+#include <stdexcept>
+#include <iostream>
 
 /* Constructors and Destructor */
 
@@ -13,28 +15,38 @@ SpringVector::~SpringVector() {}
 
 Spring&      SpringVector::equivalent_spring(string expr)
 {
-    stack<char>     stack;
+    stack<pair<char, int>>      stack;
+    vector<pair<float, int>>    storage;
 
-
-    stack.push(expr[0]);
+    expr = process(expr);
+    stack.push(std::make_pair(expr[0], 0));
 
     for (unsigned long i = 1; i < expr.size(); i++)
     {
-        char top = stack.top();
+        pair<char, int> top = stack.top();
         char curr = expr[i];
-        
-        if (is_open(curr) && is_open(top))
-            stack.push(curr);
+
+        if (matching(top.first, curr))
+        {
+            add_springs(storage, top);
+            stack.pop();
+        }
+        else if (is_open(curr))
+            stack.push(std::make_pair(curr, i));
+        else if (curr == '1')
+            storage.push_back(std::make_pair(1, top.second));
+        else
+            throw std::invalid_argument("Invalid argument");
     }
 
-    return *(new Spring);
+    return *(new Spring(storage[0].first));
 }
 
 
 /* UTIL FUNCTIONS */
 
-bool        SpringVector::is_open(char c) { return  (c == '}' || c == ']'); }
-bool        SpringVector::is_close(char c) { return  (c == '{' || c == '['); }
+bool        SpringVector::is_open(char c) { return  (c == '{' || c == '['); }
+bool        SpringVector::is_close(char c) { return  (c == '}' || c == ']'); }
 bool        SpringVector::is_brace(char c) { return  (c == '{' || c == '}'); }
 bool        SpringVector::is_bracket(char c) { return  (c == '[' || c == ']'); }
 
@@ -57,13 +69,35 @@ string      SpringVector::process(const string& expr, bool unit)
         if (matching(expr[i], expr[i+1]))
         {
             ss << ((unit) ? 1 : j++);
-            i++;
+            i += 2;
         }
         else
-            ss << expr[i];
-        i++;
+            ss << expr[i++];
     }
 
     ss << expr[i];
     return ss.str();
+}
+
+void        SpringVector::add_springs(vector<pair<float, int>>& storage, pair<char, int> top)
+{
+    unsigned long   size = storage.size();
+    unsigned long   j = size - 1;
+
+    while (j > 0)
+    {
+        if (storage[j-1].second != storage[j].second)
+            break;
+
+        if (is_brace(top.first))
+            storage[j-1].first = (storage[j].first * storage[j-1].first) / (storage[j].first + storage[j-1].first);
+        else if (is_bracket(top.first))
+            storage[j-1].first = (storage[j].first + storage[j-1].first);
+
+        storage.erase(storage.begin() + j);
+        j--;
+    }
+
+    if (j > 0)
+        storage[j].second = storage[j-1].second;
 }
