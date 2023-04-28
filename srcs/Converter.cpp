@@ -34,10 +34,10 @@ vector<double>      Converter::get_frequencies(const vector<Complex>& amplitudes
 
 vector<Complex>     Converter::get_amplitudes(const vector<double>& values)
 {
-    vector<Complex> amplitudes(values.size());
+    vector<Complex> amplitudes;
  
     for (unsigned long i = 0; i < values.size(); i++)
-        amplitudes[i] = Complex(values[i], 0.0);
+        amplitudes.push_back(Complex(values[i], 0.0));
         
     FT::fft(amplitudes);
     return amplitudes;
