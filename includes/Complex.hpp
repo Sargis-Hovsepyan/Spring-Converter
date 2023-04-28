@@ -24,6 +24,9 @@ class Complex
         Complex&    operator+(const Complex& rhs);
         Complex&    operator-(const Complex& rhs);
         Complex&    operator*(const Complex& rhs);
+
+        double  get_real() const;
+        double  get_imeginary() const;
 };
 
 ostream&   operator<<(ostream& out, Complex num);

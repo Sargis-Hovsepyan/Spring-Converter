@@ -44,6 +44,9 @@ Complex&    Complex::operator*(const Complex& rhs)
     return (*this);
 }
 
+double      Complex::get_real() const { return (this->_re); }
+double      Complex::get_imeginary() const { return (this->_im); }
+
 /* Output */
 
 ostream&   operator<<(ostream& out, Complex num)
