@@ -10,7 +10,7 @@ FT::~FT() {}
 
 /* Public Static Functions */
 
-void    FT::fft(vector<Complex>& buffer)
+void                FT::fft(vector<Complex>& buffer)
 {
     int bits = (int) (log(buffer.size()) / log(2));
 
@@ -46,7 +46,7 @@ void    FT::fft(vector<Complex>& buffer)
     }
 }
 
-int      FT::bit_reverse(int x, int bits)
+int                 FT::bit_reverse(int x, int bits)
 {
     int n = x;
     int count = bits - 1;
@@ -60,4 +60,22 @@ int      FT::bit_reverse(int x, int bits)
     }
 
     return ((n << count) & ((1 << bits) - 1));
+}
+
+vector<double>      FT::freq(double n, double time_step)
+{
+    double          c = 1 / (n * time_step);
+    double          N = floor((n - 1) / 2) + 1;
+    vector<double>  v;
+    vector<double> result;
+
+    for (double i = 0; i < N; i++)
+        v.push_back(i);
+
+    for (double i = -1 * floor(n/2); i < 0; i++)
+        v.push_back(i);
+
+    transform(v.begin(), v.end(), back_inserter(result), [c](double num) { return num * c; });
+    
+    return result;
 }
