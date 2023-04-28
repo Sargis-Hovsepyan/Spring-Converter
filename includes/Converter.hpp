@@ -10,13 +10,12 @@ using std::string;
 
 class Converter
 {
-    protected:
+    public:
         Converter();
-        Converter(const Converter &src);
         ~Converter();
 
     public:
-        virtual double       convert(const string& bits) = 0;
+        virtual double       convert(const string& bits);
 
         virtual Spring       bits_to_spring(const string &bits) = 0;
         virtual double       freq_to_decimal(vector<Complex> frequencies, vector<double> amplitudes) = 0;
@@ -24,6 +23,8 @@ class Converter
         vector<double>      get_oscilations(Spring& spring, double start, double end, int n);
         vector<double>      get_frequencies(const vector<Complex>& amplitudes, double rate);
         vector<Complex>     get_amplitudes(const vector<double>& values);
+
+        virtual void        validate(const string& bits) = 0;
 };
 
 #endif
