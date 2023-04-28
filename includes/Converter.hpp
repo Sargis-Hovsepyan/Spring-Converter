@@ -23,7 +23,7 @@ class Converter
 
         vector<double>      get_oscilations(Spring& spring, double start, double end, int n);
         vector<double>      get_frequencies(const vector<Complex>& amplitudes, double rate);
-        vector<Complex>     get_amplitudes(const vector<double>& coordinates);
+        vector<Complex>     get_amplitudes(const vector<double>& values);
 };
 
 #endif

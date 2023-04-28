@@ -30,22 +30,22 @@ void        Spring::set_k(double k) { this->_k = k; }
 
 vector<double>      Spring::move(double t, double dt, double x0)
 { 
-    return get_coordinates(0, t, dt, x0, 0, 0);
+    return get_values(0, t, dt, x0, 0, 0);
 }
 
 vector<double>      Spring::move(double t, double dt, double x0, double v0)
 {
-    return get_coordinates(0, t, dt, x0, v0, 0);
+    return get_values(0, t, dt, x0, v0, 0);
 }
 
 vector<double>      Spring::move(double t0, double t1, double dt, double x0, double v0)
 {
-    return get_coordinates(t0, t1, dt, x0, v0, 0);
+    return get_values(t0, t1, dt, x0, v0, 0);
 }
 
 vector<double>      Spring::move(double t0, double t1, double dt, double x0, double v0, double m)
 {
-    return get_coordinates(t0, t1, dt, x0, v0, m);
+    return get_values(t0, t1, dt, x0, v0, m);
 }
 
 
@@ -66,9 +66,9 @@ Spring&             Spring::operator*(const Spring& s)
 
 /* UTILITY METHODS */
 
-vector<double>      Spring::get_coordinates(double t0, double t1, double dt, double x0, double v0,  double mass=1)
+vector<double>      Spring::get_values(double t0, double t1, double dt, double x0, double v0,  double mass=1)
 {
-    vector<double> coordinates;
+    vector<double> values;
 
     double curr_time = t0; 
     double omega = sqrt(_k / mass);
@@ -79,11 +79,11 @@ vector<double>      Spring::get_coordinates(double t0, double t1, double dt, dou
     while (curr_time < t1)
     {
         double p = simple_harmonic_motion(curr_time, omega, c1, c2);
-        coordinates.push_back(p);
+        values.push_back(p);
         curr_time += dt;
     }
 
-    return coordinates;
+    return values;
 }
 
 double          Spring::simple_harmonic_motion(double t, double omega, double c1, double c2)
