@@ -38,8 +38,8 @@ Complex&    Complex::operator-(const Complex& rhs)
 
 Complex&    Complex::operator*(const Complex& rhs)
 {
-    this->_re = this->_re * rhs._re - this->_im * rhs._im;
-    this->_im += this->_re * rhs._im + this->_im * rhs._re;
+    this->_re = (this->_re * rhs._re) - (this->_im * rhs._im);
+    this->_im = (this->_re * rhs._im) + (this->_im * rhs._re);
 
     return (*this);
 }
