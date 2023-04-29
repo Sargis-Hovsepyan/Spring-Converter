@@ -18,7 +18,6 @@ Spring&     Spring::operator=(const Spring& src)
 
 
 double      Spring::get_k() const { return (this->_k); }
-
 void        Spring::set_k(double k) { this->_k = k; }
 
 
