@@ -35,7 +35,7 @@ class Spring
     /* UTILITY METHODS */
     
     private:
-        vector<double>      get_values(double t0, double t1, double dt, double x0, double v0,  double mass);
+        vector<double>      get_values(double t0, double t1, double dt, double x0, double v0,  double mass=1);
         double              simple_harmonic_motion(double t, double omega, double c1, double c2);
 };
 

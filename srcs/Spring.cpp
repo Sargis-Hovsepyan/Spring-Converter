@@ -66,7 +66,7 @@ Spring&             Spring::operator*(const Spring& s)
 
 /* UTILITY METHODS */
 
-vector<double>      Spring::get_values(double t0, double t1, double dt, double x0, double v0,  double mass=1)
+vector<double>      Spring::get_values(double t0, double t1, double dt, double x0, double v0,  double mass)
 {
     vector<double> values;
 
