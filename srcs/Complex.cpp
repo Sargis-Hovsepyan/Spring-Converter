@@ -4,7 +4,7 @@
 
 Complex::Complex() : _re(0), _im(0) {}
 
-Complex::Complex(double re, double im) : _re(re), _im(im) {}
+Complex::Complex(long double re, long double im) : _re(re), _im(im) {}
 
 Complex::Complex(const Complex& src) { *this = src; }
 
@@ -44,8 +44,8 @@ Complex&    Complex::operator*(const Complex& rhs)
     return (*this);
 }
 
-double      Complex::get_real() const { return (this->_re); }
-double      Complex::get_imeginary() const { return (this->_im); }
+long double      Complex::get_real() const { return (this->_re); }
+long double      Complex::get_imeginary() const { return (this->_im); }
 
 /* Output */
 

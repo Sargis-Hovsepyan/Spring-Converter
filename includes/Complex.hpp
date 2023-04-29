@@ -2,20 +2,19 @@
 #define COMPLEX_HPP
 
 #include <iostream>
-
 using std::ostream;
 
 class Complex 
 {
     private:
-        double  _re;
-        double  _im;
+        long double  _re;
+        long double  _im;
 
         friend ostream&   operator<<(ostream& out, Complex num);
 
     public:
         Complex();
-        Complex(double re, double im);
+        Complex(long double re, long double im);
         Complex(const Complex& src);
         ~Complex();
 
@@ -25,8 +24,8 @@ class Complex
         Complex&    operator-(const Complex& rhs);
         Complex&    operator*(const Complex& rhs);
 
-        double  get_real() const;
-        double  get_imeginary() const;
+        long double  get_real() const;
+        long double  get_imeginary() const;
 };
 
 ostream&   operator<<(ostream& out, Complex num);
