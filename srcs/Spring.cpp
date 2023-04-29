@@ -3,11 +3,8 @@
 /* Constructors and Destructor */
 
 Spring::Spring() : _k(1) {}
-
 Spring::Spring(const double k) : _k(k) {}
-
 Spring::Spring(const Spring& other) { *this = other; }
-
 Spring::~Spring() {}
 
 Spring&     Spring::operator=(const Spring& src)

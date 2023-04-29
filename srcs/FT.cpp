@@ -3,9 +3,7 @@
 /* Constructors and Destructor */
 
 FT::FT() {}
-
 FT::FT(const FT& src) { (void)src; }
-
 FT::~FT() {}
 
 /* Public Static Functions */
@@ -64,18 +62,19 @@ int                 FT::bit_reverse(int x, int bits)
 
 vector<double>      FT::freq(double n, double time_step)
 {
-    double          c = 1 / (n * time_step);
-    double          N = floor((n - 1) / 2) + 1;
     vector<double>  v;
     vector<double> result;
 
-    for (double i = 0; i < N; i++)
+    double c = 1 / (n * time_step);
+    double N = floor((n - 1) / 2) + 1;
+
+    for (double i = 0; i < N - 1; i++)
         v.push_back(i);
 
     for (double i = -1 * floor(n/2); i < 0; i++)
         v.push_back(i);
 
     transform(v.begin(), v.end(), back_inserter(result), [c](double num) { return num * c; });
-    
+
     return result;
 }
