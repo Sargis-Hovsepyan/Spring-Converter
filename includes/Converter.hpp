@@ -12,7 +12,7 @@ class Converter
 {
     public:
         Converter();
-        ~Converter();
+        virtual ~Converter();
 
     public:
         virtual double       convert(const string& bits);
