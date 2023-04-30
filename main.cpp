@@ -1,50 +1,36 @@
 #include "Converter8Bit.hpp"
+#include "ConverterInt.hpp"
+#include "ConverterFloat.hpp"
 
 int main()
 {
-    Converter8Bit bit;
+    Converter8Bit   bit_converter;
+    ConverterInt    int_converter;
+    ConverterFloat  float_converter;
     
-    std::cout << bit.convert("11110000") << std::endl;
+    std::cout << "Testing 8 Bit converter\n" << std::endl;
 
+    std::cout << "Input: 11110000   Output: " << bit_converter.convert("11110000") << std::endl;
+    std::cout << "Input: 10010110   Output: " << bit_converter.convert("10010110") << std::endl;
+    std::cout << "Input: 11110000   Output: " << bit_converter.convert("01010100") << std::endl;
+    std::cout << "Input: 11110000   Output: " << bit_converter.convert("00000000") << std::endl;
+    std::cout << "Input: 11110000   Output: " << bit_converter.convert("11111111") << std::endl;
 
-    // This function gives you the amplitudes and takes the oscilations
-    
-    // void                FT::fft(vector<Complex>& buffer)
-    // {
-    //     int bits = (int) (log(buffer.size()) / log(2));
+    std::cout << "Testing 32 Bit Integer converter\n" << std::endl;
 
-    //     for (unsigned long j = 1; j < buffer.size() / 2; j++) 
-    //     {
-    //         int swap_idx = bit_reverse(j, bits);
+    std::cout << "Input: 1111000011110000   Output: " << int_converter.convert("1111000011110000") << std::endl;
+    std::cout << "Input: 1001000011010000   Output: " << int_converter.convert("1001000011010000") << std::endl;
+    std::cout << "Input: 1110001011110110   Output: " << int_converter.convert("1110001011110110") << std::endl;
+    std::cout << "Input: 000000001111000011110000   Output: " << int_converter.convert("000000001111000011110000") << std::endl;
+    std::cout << "Input: 10101010111100001111000010101010   Output: " << int_converter.convert("10101010111100001111000010101010") << std::endl;
 
-    //         Complex temp = buffer[j];
-    //         buffer[j] = buffer[swap_idx];
-    //         buffer[swap_idx] = temp;   
-    //     }
+    std::cout << "Testing Floating point converter\n" << std::endl;
 
-    //     for (unsigned long N = 2; N <= buffer.size(); N <<= 1)
-    //     {
-    //         for (unsigned long i = 0; i < buffer.size(); i += N)
-    //         {
-    //             for (unsigned long k = 0; k < N / 2; k++)
-    //             {
-    //                 int even_idx = i + k;
-    //                 int odd_idx = i + k + (N / 2);
-
-    //                 Complex even = buffer[even_idx];
-    //                 Complex odd = buffer[odd_idx];
-
-    //                 double term = (-2 * PI * k) / (double) N;
-    //                 Complex exp(cos(term), sin(term));
-    //                 exp = (exp * odd);
-
-    //                 buffer[even_idx] = (even + exp);
-    //                 buffer[odd_idx] = (even - exp);
-    //             }
-    //         }
-    //     }
-    // }
-    
+    std::cout << "Input: 111100.0011110000   Output: " << float_converter.convert("111100.0011110000") << std::endl;
+    std::cout << "Input: 1010111100.00111000   Output: " << float_converter.convert("1010111100.00111000") << std::endl;
+    std::cout << "Input: 1111000011110.110   Output: " << float_converter.convert("1111000011110.110") << std::endl;
+    std::cout << "Input: 1.0011110000   Output: " << float_converter.convert("1.0011110000") << std::endl;
+    std::cout << "Input: 000111111100.1110000   Output: " << float_converter.convert("000111111100.11110000") << std::endl;
 
     return 0;
 }
