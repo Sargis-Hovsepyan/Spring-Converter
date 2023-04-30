@@ -22,6 +22,17 @@ double      Converter::convert(const string& bits)
     return freq_to_decimal(amplitudes, frequencies);
 }
 
+double  Converter::freq_to_decimal(vector<Complex> amplitudes, vector<double> frequencies)
+{
+    int max = 0;
+    for (unsigned long i = 0; i < amplitudes.size(); i++)
+        if (amplitudes[max].get_real() < amplitudes[i].get_real())
+                max = i;
+    
+    double omega = frequencies[max] * 2 * PI;
+    return round(omega * omega * 0.001);
+}
+
 vector<double>      Converter::get_oscilations(Spring& spring, double start, double end, int n)
 {
     return spring.move(start, end, end / n, 1, 0, 0.001);

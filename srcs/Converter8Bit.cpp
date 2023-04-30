@@ -28,17 +28,6 @@ Spring  Converter8Bit::bits_to_spring(const string &bits)
     return SpringVector::equivalent_spring(expr, springs);
 }
 
-double  Converter8Bit::freq_to_decimal(vector<Complex> amplitudes, vector<double> frequencies)
-{
-    int max = 0;
-    for (unsigned long i = 0; i < amplitudes.size(); i++)
-        if (amplitudes[max].get_real() < amplitudes[i].get_real())
-                max = i;
-    
-    double omega = frequencies[max] * 2 * PI;
-    return round(omega * omega * 0.001);
-}
-
 void    Converter8Bit::validate(const string& bits)
 {
     if(bits.length() != 8)

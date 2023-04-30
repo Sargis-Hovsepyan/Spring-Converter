@@ -28,16 +28,6 @@ Spring  ConverterInt::bits_to_spring(const string &bits)
     return SpringVector::equivalent_spring(expr, springs);
 }
 
-double  ConverterInt::freq_to_decimal(vector<Complex> amplitudes, vector<double> frequencies)
-{
-    int max = 0;
-    for (unsigned long i = 0; i < amplitudes.size(); i++)
-        if (amplitudes[max].get_real() < amplitudes[i].get_real())
-                max = i;
-    
-    double omega = frequencies[max] * 2 * PI;
-    return round(omega * omega * 0.001);
-}
 
 void    ConverterInt::validate(const string& bits)
 { 
