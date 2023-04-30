@@ -18,7 +18,7 @@ void                FT::fft(vector<Complex>& buffer)
 
         Complex temp = buffer[j];
         buffer[j] = buffer[swap_idx];
-        buffer[swap_idx] = temp;
+        buffer[swap_idx] = temp;   
     }
 
     for (unsigned long N = 2; N <= buffer.size(); N <<= 1)
@@ -35,10 +35,10 @@ void                FT::fft(vector<Complex>& buffer)
 
                 double term = (-2 * PI * k) / (double) N;
                 Complex exp(cos(term), sin(term));
-                exp = exp * odd;
+                exp = (exp * odd);
 
-                buffer[even_idx] = even + exp;
-                buffer[odd_idx] = even - exp;
+                buffer[even_idx] = (even + exp);
+                buffer[odd_idx] = (even - exp);
             }
         }
     }
