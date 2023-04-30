@@ -30,5 +30,5 @@ Links
 ## IMPORTANT ⚠️
 
 The project is complete but there is an issue connected with retrived amplitudes as the practical
-results differ from theoretical ones messing up the results. Retrieving values, transforming them to
-amplitudes and then frequencies is implemented in srcs/Converter.cpp.
+results differ from theoretical ones, which messes up the conversion results. Retrieving values, 
+transforming them to amplitudes and then frequencies is implemented in srcs/Converter.cpp.
