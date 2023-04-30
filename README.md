@@ -25,6 +25,10 @@ Links
 - <a href= "https://www.math.purdue.edu/files/academic/courses/2014fall/MA16021/FourierSeries(nopauses).pdf"> Fourier Series</a>
 - [Fourier Transforms](https://scholar.harvard.edu/files/schwartz/files/lecture8-fouriertransforms.pdf)
 
-# IMPORTANT
+<br>
 
-The Project is incomplete(95/100%)... I need one more day to finish
+## IMPORTANT ⚠️
+
+The project is complete but there is an issue connected with retrived amplitudes as the practical
+results differ from theoretical ones messing up the results. Retrieving values, transforming them to
+amplitudes and then frequencies is implemented in srcs/Converter.cpp.
