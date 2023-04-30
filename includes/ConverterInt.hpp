@@ -15,7 +15,6 @@ class ConverterInt : public Converter
 
     public:
         Spring  bits_to_spring(const string &bits);
-
         void    validate(const string& bits);
 };
 
